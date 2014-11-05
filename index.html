@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Cohhilition</title>
+    <!--
+        This template can be used for simple tab view application that has tabs at the bottom to switch views, for applications like Phone app, Facebook App or Instagram app.
+    -->
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;"/>
+
+    <link rel="stylesheet" type="text/css" href="appframework/af.ui.css"/>
+    <link rel="stylesheet" type="text/css" href="appframework/icons.css"/>
+    <script type="text/javascript" charset="utf-8" src="appframework/appframework.ui.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        document.addEventListener("deviceready", function () {
+            $("#btnYes").on("click", function () {
+                playAudio('https://dl.dropboxusercontent.com/u/626134/joker.wav');
+            });
+            $("#btnNo").on("click", function () {
+                playAudio(audio/basic/no.mp3);
+            });
+        }, false);
+        var my_media = null;
+        var mediaTimer = null;
+        function playAudio(src) {
+            // Create Media object from src
+            my_media = new Media(src, onSuccess, onError);
+            // Play audio
+            my_media.play();
+        }
+        // onSuccess Callback
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
+        // onError Callback
+        function onError(error) {
+            alert('code: ' + error.code + '\n' +
+                    'message: ' + error.message + '\n');
+        }
+    </script>
+
+    <script>
+        $.ui.autoLaunch = false;
+        $.ui.animateHeaders = false;
+
+        $(document).ready(function () {
+            $.ui.launch();
+        });
+    </script>
+</head>
+<body>
+<div id="afui">
+
+    <div id="content" style="">
+
+        <!--Tab View Pages-->
+        <div class="panel" title="Home" id="page1" data-tab="tab1" selected="true">
+            <header>
+                <h1>The Cohhilition</h1>
+            </header>
+            <p>This is view for first Tab</p>
+            <button class="button" id="btnYes">Play</button>
+
+        </div>
+
+        <div class="panel" title="Favorites" id="page2" data-tab="tab2">
+            <header>
+                <h1>Favorites</h1>
+            </header>
+            <p>This is view for second Tab</p>
+        </div>
+
+        <div class="panel" title="Messages" id="page3" data-tab="tab3">
+            <header>
+                <h1>Messages</h1>
+            </header>
+            <p>This is view for third Tab</p>
+        </div>
+
+        <div class="panel" title="Profile" id="page4" data-tab="tab4">
+            <header>
+                <h1>Profile</h1>
+            </header>
+            <p>This is view for fourth Tab</p>
+        </div>
+
+    </div>
+
+    <!--Footer with Tabs or Navigation bar -->
+    <div id="navbar">
+        <a href="#page1" id='tab1' class="icon home" data-transition="none">Home</a>
+        <a href="#page2" id='tab2' class="icon heart" data-transition="none">Favorites</a>
+        <a href="#page3" id='tab3' class="icon chat" data-transition="none">Messages</a>
+        <a href="#page4" id='tab4' class="icon user" data-transition="none">Profile</a>
+    </div>
+
+</div>
+</body>
+</html>    
