@@ -10,7 +10,7 @@
     <name>Cohhilition</name>
 
     <description>
-        An example for phonegap build docs. 
+       Mobile application to interface with The Cohhilition Web Portal.
     </description>
     <icon src="icon.png" />
 
