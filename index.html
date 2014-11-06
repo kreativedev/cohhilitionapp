@@ -12,6 +12,7 @@
     <script type="text/javascript" charset="utf-8" src="appframework/appframework.ui.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
+
     <script type="text/javascript" charset="utf-8">
         document.addEventListener("deviceready", function () {
             $("#btnYes").on("click", function () {
@@ -40,13 +41,46 @@
         }
     </script>
 
-    <script>
-        $.ui.autoLaunch = false;
-        $.ui.animateHeaders = false;
+    <!--<script>-->
+        <!--$.ui.autoLaunch = false;-->
+        <!--$.ui.animateHeaders = false;-->
 
-        $(document).ready(function () {
-            $.ui.launch();
-        });
+        <!--$(document).ready(function () {-->
+            <!--$.ui.launch();-->
+        <!--});-->
+    <!--</script>-->
+
+    <script>
+        if (localStorage) {
+
+            $(function() {
+                $("#api-form")
+                    .after("<input type='submit' value='Save API' id='saveData'>");
+                $("#saveData")
+                    .click(function(e) {
+
+                        //prevent default action of submitting the form
+                        e.preventDefault();
+
+                        localStorage.setItem("portalapi", "set");
+
+                        var data = $("#api-form").serializeArray();
+
+                        $.each(data, function(i, obj) {
+                            localStorage.setItem(obj.name, obj.value);
+                        });
+
+                    });
+
+                    if(localStorage.getItem("portalapi") == "set"){
+                        var apiToken = localStorage.getItem("api");
+                        $("#api").val(apiToken);
+                        $("#api").prop("readonly",true);
+                        $("#saveData").remove();
+                    }
+            });
+
+        }
     </script>
 </head>
 <body>
@@ -80,9 +114,15 @@
 
         <div class="panel" title="Profile" id="page4" data-tab="tab4">
             <header>
-                <h1>Profile</h1>
+                <h1>API</h1>
             </header>
-            <p>This is view for fourth Tab</p>
+            <p>You need to generate an API key from http://apps.cohhilition.com in order to use this app.</p>
+            <p>
+                <form id="api-form">
+                    <input type="text" name="api" id="api" />
+                </form>
+
+            </p>
         </div>
 
     </div>
