@@ -18,6 +18,4 @@
         Author Name
     </author>
 
-    <gap:plugin name="org.apache.cordova.statusbar" version="0.1.4" />
-
 </widget>
